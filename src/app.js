@@ -25,5 +25,5 @@ app.use(express.urlencoded({extended:false}));//obtener datos de un formulario
 app.use('/',indexRoutes);
 
 app.listen(3000, () => {
-    console.log("Server listening to port 3000");
+    console.log("Server on port 3000");
 });
