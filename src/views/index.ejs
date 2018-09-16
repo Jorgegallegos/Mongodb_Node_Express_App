@@ -1,0 +1,57 @@
+<% include partials/header %>
+
+<div class="container">
+    <div class="row">
+        <!--FORMULARIO-->
+        <div class="col-md-5">
+            <form action="/add" method="POST">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title" class="form-control" placeholder="Enter title">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description" class="form-control" placeholder="Enter description"></textarea>       
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" name="status" id="status" class="form-check-input">
+                    <label class="form-check-label" for="status">Status</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    
+
+        <!--LISTAR DATOS EN UNA TABLA-->
+        <div class="col-md-7">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%for(var i=0;i<task.length;i++) { %>
+                        <tr>
+                            <td><%=i+1%></td>
+                            <td><%=task[i].title%></td>
+                            <td><%=task[i].description%></td>
+                            <td><%=task[i].status%></td>
+                            <td>
+                                <a href="/delete/<%= task[i].id %>" class="btn btn-danger">Delete</a>
+                                <a href="/edit/ <%= task[i].id %>" class="btn btn-info">Edit</a>
+                            </td>
+                        </tr>
+                    <%}%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<% include partials/footer %>
